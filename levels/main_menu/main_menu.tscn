@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://ebyrho8l5vji"]
+[gd_scene load_steps=2 format=3 uid="uid://ebyrho8l5vji"]
+
+[ext_resource type="Script" uid="uid://bmyy5mwniabxb" path="res://levels/main_menu/main_menu.gd" id="1_nt5r4"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nt5r4")
 
 [node name="StartMenu" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(160, 0)
@@ -146,3 +149,9 @@ text = "Start game"
 [node name="QuitButton" type="Button" parent="LobbyMenu"]
 layout_mode = 2
 text = "Quit lobby"
+
+[connection signal="pressed" from="StartMenu/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="StartMenu/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="StartMenu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="HostMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="JoinMenu/BackButton" to="." method="_on_back_button_pressed"]
