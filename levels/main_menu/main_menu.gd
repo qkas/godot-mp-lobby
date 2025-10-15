@@ -1,11 +1,12 @@
 extends Control
 
-enum Menu { START, HOST, JOIN, LOBBY }
+enum Menu { START, HOST, JOIN, LOADING, LOBBY }
 
 @onready var menus: Dictionary = {
 	Menu.START: $StartMenu,
 	Menu.HOST: $HostMenu,
 	Menu.JOIN: $JoinMenu,
+	Menu.LOADING: $LoadingMenu,
 	Menu.LOBBY: $LobbyMenu
 }
 
@@ -24,6 +25,9 @@ func _on_host_button_pressed() -> void:
 
 func _on_join_button_pressed() -> void:
 	show_menu(Menu.JOIN)
+
+func _on_start_loading_button_pressed() -> void:
+	show_menu(Menu.LOADING)
 
 func _on_back_button_pressed() -> void:
 	show_menu(Menu.START)
