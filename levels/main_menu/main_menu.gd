@@ -1,18 +1,19 @@
 extends Control
 
-enum Menu { START, HOST, JOIN, LOADING, LOBBY }
+enum Menu { START, HOST, JOIN, LOADING, ERROR, LOBBY }
 
 @onready var menus: Dictionary = {
 	Menu.START: $StartMenu,
 	Menu.HOST: $HostMenu,
 	Menu.JOIN: $JoinMenu,
 	Menu.LOADING: $LoadingMenu,
+	Menu.ERROR: $ErrorMenu,
 	Menu.LOBBY: $LobbyMenu
 }
 
 var current_menu: Menu = Menu.START
 
-func show_menu(target_menu: Menu):
+func show_menu(target_menu: Menu) -> void:
 	menus[current_menu].visible = false
 	menus[target_menu].visible = true
 	current_menu = target_menu

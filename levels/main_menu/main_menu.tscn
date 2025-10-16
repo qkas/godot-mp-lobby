@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_nt5r4")
 
 [node name="StartMenu" type="VBoxContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -54,9 +55,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -80.0
-offset_top = -68.0
+offset_top = -85.5
 offset_right = 80.0
-offset_bottom = 68.0
+offset_bottom = 85.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_86fa0")
@@ -71,6 +72,15 @@ horizontal_alignment = 1
 layout_mode = 2
 placeholder_text = "Your name"
 alignment = 1
+max_length = 16
+
+[node name="ConnectionType" type="TabBar" parent="HostMenu"]
+layout_mode = 2
+current_tab = 0
+tab_alignment = 1
+tab_count = 2
+tab_0/title = " LOCAL "
+tab_1/title = "ONLINE"
 
 [node name="StartHostButton" type="Button" parent="HostMenu"]
 layout_mode = 2
@@ -82,7 +92,6 @@ text = "Back
 "
 
 [node name="JoinMenu" type="VBoxContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -91,9 +100,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -80.0
-offset_top = -85.5
+offset_top = -103.0
 offset_right = 80.0
-offset_bottom = 85.5
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_h370v")
@@ -108,11 +117,25 @@ horizontal_alignment = 1
 layout_mode = 2
 placeholder_text = "Your name"
 alignment = 1
+max_length = 16
+
+[node name="ConnectionType" type="TabBar" parent="JoinMenu"]
+layout_mode = 2
+current_tab = 0
+tab_alignment = 1
+clip_tabs = false
+scrolling_enabled = false
+scroll_to_selected = false
+tab_count = 2
+tab_0/title = " LOCAL "
+tab_1/title = "ONLINE"
 
 [node name="CodeInput" type="LineEdit" parent="JoinMenu"]
 layout_mode = 2
 placeholder_text = "Lobby code"
 alignment = 1
+max_length = 16
+editable = false
 
 [node name="StartJoinButton" type="Button" parent="JoinMenu"]
 layout_mode = 2
@@ -154,6 +177,39 @@ horizontal_alignment = 1
 [node name="CancelButton" type="Button" parent="LoadingMenu"]
 layout_mode = 2
 text = "Cancel"
+
+[node name="ErrorMenu" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -51.0
+offset_right = 80.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Error" type="Label" parent="ErrorMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Error"
+horizontal_alignment = 1
+
+[node name="ErrorMessage" type="Label" parent="ErrorMenu"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="ErrorMenu"]
+layout_mode = 2
+text = "Back"
 
 [node name="LobbyMenu" type="VBoxContainer" parent="."]
 visible = false
@@ -206,7 +262,9 @@ text = "Quit lobby"
 [connection signal="pressed" from="StartMenu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="HostMenu/StartHostButton" to="." method="_on_start_loading_button_pressed"]
 [connection signal="pressed" from="HostMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="tab_changed" from="JoinMenu/ConnectionType" to="JoinMenu" method="_on_connection_type_tab_changed"]
 [connection signal="pressed" from="JoinMenu/StartJoinButton" to="." method="_on_start_loading_button_pressed"]
 [connection signal="pressed" from="JoinMenu/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="LoadingMenu/CancelButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ErrorMenu/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="LobbyMenu/QuitButton" to="." method="_on_back_button_pressed"]
