@@ -46,6 +46,7 @@ func _on_back_button_pressed() -> void:
 func _on_player_connected(peer_id: int, _player_info: Dictionary) -> void:
 	if multiplayer.get_unique_id() == peer_id:
 		show_menu(Menu.LOBBY)
+		$LobbyMenu/StartGameButton.disabled = !multiplayer.is_server()
 
 func _on_server_disconnected() -> void:
 	show_error("The host has disconnected.")
