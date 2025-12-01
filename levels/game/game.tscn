@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj70i3i0fd4l5"]
+
+[ext_resource type="Script" uid="uid://cvv5ofau60ws1" path="res://levels/game/game.gd" id="1_sg147"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cjbnx"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_sg147"]
+sky_material = SubResource("ProceduralSkyMaterial_cjbnx")
+
+[sub_resource type="Environment" id="Environment_2oeyt"]
+background_mode = 2
+sky = SubResource("Sky_sg147")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_sg147"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2oeyt"]
+size = Vector3(10, 0.1, 10)
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_sg147")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2oeyt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_sg147")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019165, -0.00650024, 0.0219727)
+shape = SubResource("BoxShape3D_2oeyt")
+
+[node name="Players" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://ckh402dlip1xx")
+spawn_path = NodePath("../Players")
+
+[node name="GameStatus" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 50.0
+offset_right = 80.0
+offset_bottom = 73.0
+grow_horizontal = 2
+text = "Waiting for players..."

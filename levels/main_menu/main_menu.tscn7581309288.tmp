@@ -1,0 +1,286 @@
+[gd_scene load_steps=5 format=3 uid="uid://ebyrho8l5vji"]
+
+[ext_resource type="Script" uid="uid://bmyy5mwniabxb" path="res://levels/main_menu/main_menu.gd" id="1_nt5r4"]
+[ext_resource type="Script" uid="uid://cfkjotras5ifd" path="res://levels/main_menu/host_menu.gd" id="2_86fa0"]
+[ext_resource type="Script" uid="uid://gciny6uhe6tm" path="res://levels/main_menu/join_menu.gd" id="3_h370v"]
+[ext_resource type="Script" uid="uid://dy6xmee3doub2" path="res://levels/main_menu/lobby_menu.gd" id="4_qhxwq"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nt5r4")
+
+[node name="StartMenu" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -72.0
+offset_right = 80.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitle" type="Label" parent="StartMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Game Title"
+horizontal_alignment = 1
+
+[node name="HostButton" type="Button" parent="StartMenu"]
+layout_mode = 2
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="StartMenu"]
+layout_mode = 2
+text = "Join"
+
+[node name="QuitButton" type="Button" parent="StartMenu"]
+layout_mode = 2
+text = "Quit"
+
+[node name="HostMenu" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -85.5
+offset_right = 80.0
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_86fa0")
+
+[node name="Host" type="Label" parent="HostMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Host game"
+horizontal_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="HostMenu"]
+layout_mode = 2
+placeholder_text = "Your name"
+alignment = 1
+max_length = 16
+
+[node name="ConnectionType" type="TabBar" parent="HostMenu"]
+layout_mode = 2
+current_tab = 0
+tab_alignment = 1
+tab_count = 2
+tab_0/title = " LOCAL "
+tab_1/title = "ONLINE"
+
+[node name="StartHostButton" type="Button" parent="HostMenu"]
+layout_mode = 2
+text = "Host"
+
+[node name="BackButton" type="Button" parent="HostMenu"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="JoinMenu" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -103.0
+offset_right = 80.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_h370v")
+
+[node name="Join" type="Label" parent="JoinMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Join game"
+horizontal_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="JoinMenu"]
+layout_mode = 2
+placeholder_text = "Your name"
+alignment = 1
+max_length = 16
+
+[node name="ConnectionType" type="TabBar" parent="JoinMenu"]
+layout_mode = 2
+current_tab = 0
+tab_alignment = 1
+clip_tabs = false
+scrolling_enabled = false
+scroll_to_selected = false
+tab_count = 2
+tab_0/title = " LOCAL "
+tab_1/title = "ONLINE"
+
+[node name="CodeInput" type="LineEdit" parent="JoinMenu"]
+layout_mode = 2
+placeholder_text = "Lobby code"
+alignment = 1
+max_length = 16
+editable = false
+
+[node name="StartJoinButton" type="Button" parent="JoinMenu"]
+layout_mode = 2
+text = "Join"
+
+[node name="BackButton" type="Button" parent="JoinMenu"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="LoadingMenu" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -51.0
+offset_right = 80.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Loading" type="Label" parent="LoadingMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Loading"
+horizontal_alignment = 1
+
+[node name="LoadingStatus" type="Label" parent="LoadingMenu"]
+layout_mode = 2
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+
+[node name="CancelButton" type="Button" parent="LoadingMenu"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="ErrorMenu" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -51.0
+offset_right = 80.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Error" type="Label" parent="ErrorMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Error"
+horizontal_alignment = 1
+
+[node name="ErrorMessage" type="Label" parent="ErrorMenu"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="ErrorMenu"]
+layout_mode = 2
+text = "Back"
+
+[node name="LobbyMenu" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -88.0
+offset_right = 80.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_qhxwq")
+
+[node name="Lobby" type="Label" parent="LobbyMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Lobby"
+horizontal_alignment = 1
+
+[node name="LobbyCode" type="Label" parent="LobbyMenu"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LobbyMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="PlayerList" type="Label" parent="LobbyMenu/MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartGameButton" type="Button" parent="LobbyMenu"]
+layout_mode = 2
+text = "Start game"
+
+[node name="QuitLobbyButton" type="Button" parent="LobbyMenu"]
+layout_mode = 2
+text = "Quit lobby"
+
+[connection signal="pressed" from="StartMenu/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="StartMenu/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="StartMenu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="HostMenu/StartHostButton" to="HostMenu" method="_on_start_host_button_pressed"]
+[connection signal="pressed" from="HostMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="tab_changed" from="JoinMenu/ConnectionType" to="JoinMenu" method="_on_connection_type_tab_changed"]
+[connection signal="pressed" from="JoinMenu/StartJoinButton" to="JoinMenu" method="_on_start_join_button_pressed"]
+[connection signal="pressed" from="JoinMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="LoadingMenu/CancelButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ErrorMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="visibility_changed" from="LobbyMenu" to="LobbyMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="LobbyMenu/StartGameButton" to="LobbyMenu" method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="LobbyMenu/QuitLobbyButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="LobbyMenu/QuitLobbyButton" to="LobbyMenu" method="_on_quit_lobby_button_pressed"]
